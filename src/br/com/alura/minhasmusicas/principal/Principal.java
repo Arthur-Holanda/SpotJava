@@ -1,37 +1,35 @@
 package br.com.alura.minhasmusicas.principal;
-
-import br.com.alura.minhasmusicas.modelos.MinhasPreferidas;
 import br.com.alura.minhasmusicas.modelos.Musica;
 import br.com.alura.minhasmusicas.modelos.Podcast;
+import br.com.alura.minhasmusicas.modelos.Preferidas;
 
 public class Principal {
     public static void main(String[] args) {
         Musica minhaMusica = new Musica();
         minhaMusica.setTitulo("Forever");
         minhaMusica.setCantor("Kiss");
-
-        for (int i = 0; i < 1000; i++) {
-            minhaMusica.reproduz();
-        }
-
-        for (int i = 0; i < 50; i++) {
-            minhaMusica.curte();
-        }
-
         Podcast meuPodcast = new Podcast();
         meuPodcast.setTitulo("BolhaDev");
-        meuPodcast.setApresentador("Marcus Mendes");
+        meuPodcast.setHost("Marcos Mendes");
 
-        for (int i = 0; i < 5000; i++) {
-            meuPodcast.reproduz();
+        
+        for (int i = 0; i < 6000; i++) {
+            if(i%3==0) {
+                minhaMusica.reproduz();
+                if(i%2==0){
+                    minhaMusica.curte();
+                }
+            }
+            if(i%2==0){
+                meuPodcast.reproduz();
+                if(i%3==0){
+                    meuPodcast.curte();
+                }
+            }
         }
-
-        for (int i = 0; i < 1000; i++) {
-            meuPodcast.curte();
-        }
-
-        MinhasPreferidas preferidas = new MinhasPreferidas();
+        Preferidas preferidas = new Preferidas();
         preferidas.inclui(meuPodcast);
         preferidas.inclui(minhaMusica);
     }
+
 }
